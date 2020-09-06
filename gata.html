@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Gata Page</title>
+    <meta charset="UTF-8">
+
+    <style>
+      .entry {
+        background: red;
+        padding: 8px;
+      }
+    </style>
+
+    <script>
+
+    
+        // STATE
+        let count = 0;
+
+
+        // ACTIONS
+        function addEntry() {
+            const inputField = document.querySelector('.inputf');
+            if (inputField.value === "") {
+              return;
+            }
+            const targetDiv = document.querySelector('.underdiv');
+            const myP = document.createElement("p");
+            myP.innerHTML = inputField.value;
+            myP.className = "entry";
+
+            targetDiv.appendChild(myP);
+            //clear out input field
+            inputField.value = "";
+
+            increaseCounter();
+        }
+
+        function clearAllEntries() {
+            const targetDiv = document.querySelector('.underdiv');
+            targetDiv.innerHTML = "";
+        }
+
+
+        // UTILS
+        function increaseCounter() {
+            const displayCount = document.querySelector(".displayCount");
+            count++;
+
+            if(displayCount) {
+                displayCount.innerHTML = count;
+            }
+        }
+    </script>
+  </head>
+
+
+  <body>
+   	<h1>
+        Γειά σας, είμαι μια γάτα
+        <span class="displayCount">0</span>
+        φορές. Τώρα έχω
+        <span class="displayCurrentSize">???</span>
+        entries.
+    </h1>
+    <form action="#" onsubmit="addEntry()" class="magicform">
+      <input type="text" placeholder="type here" class="inputf">
+      <button onclick ="addEntry()" class="countButton">Add</button>
+      <button onclick="clearAllEntries()" type="button">Clear</button>
+    </form>
+    <div class="underdiv"></div>
+  </body>
+
+
+
+</html>
